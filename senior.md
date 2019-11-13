@@ -144,15 +144,15 @@ Em cada novo cálculo, deve-se verificar se o valor da parcela ultrapassa a rend
 Se todos os cálculos forem concluídos (em 6x, 9x e 12x) e mesmo assim a parcela ainda ultrapassar a renda comprometida, esta política deve `recusar` a solicitação.
 
 ##### Exemplo
-João solicitou um empréstimo de R$ 1.000,00 para pagar em 6 parcelas. A renda de João é de R$ 1.500,00, mas 80% desta renda está comprometida, sobrando R$ 300,00.
+João solicitou um empréstimo de R$ 2.500,00 para pagar em 6 parcelas. A renda de João é de R$ 1.500,00, mas 80% desta renda está comprometida, sobrando R$ 300,00.
 
 O sistema calculou a parcela de R$ 500,00. Visto que essa parcela ultrapassa os R$ 300,00, o sistema irá fazer um novo cálculo, porém com 9 parcelas ao invés de 6 como solicitado por João.
 
-Ao efetuar este cálculo, chegou-se no valor da parcela de R$ 320,00.
+Ao efetuar este cálculo, chegou-se no valor da parcela de R$ 390,00.
 
 Este valor ainda é maior que os R$ 300,00 que João consegue pagar. Logo, o sistema tenta um novo cálculo, porém agora com 12 parcelas, chegando a um valor de parcela de R$ 280,00. 
 
-Como este valor é menor que R$ 300, esta será a oferta informada para João: R$ 1.000,00 de empréstimo a serem pagos em 12 vezes de R$ 280,00.
+Como este valor é menor que R$ 300, esta será a oferta informada para João: R$ 2.500,00 de empréstimo a serem pagos em 12 vezes de R$ 280,00.
 
 
 ## Taxas de Juros
