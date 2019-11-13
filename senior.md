@@ -116,10 +116,12 @@ Esta API utiliza autenticação via token. Você deve solicitar o token previame
  }
 ```
 
+Exemplo de resposta para 80% da renda comprometida:
+
 #### RESPONSE BODY
 ```json
  {
-     "commitment": 0.8 // 80% da renda comprometida
+     "commitment": 0.8
  }
 ```
 
