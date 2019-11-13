@@ -14,7 +14,7 @@ Você como engenheiro de software Noverde, precisa desenvolver uma aplicação b
 Este endpoint é responsável por receber as requisições. Ao recebê-la, você deve armazear os dados enviados pelo cliente para processamento posterior, e gerar um ID (UUID) retornando-o imediatamente. 
 
 O processamento dos dados enviados será executado em background (ex: Sidekiq em Ruby ou Celery em Python).
-As informações trocadas na requisição e na resposta, precisam ser formatadas em `json`, seguindo os schemas listados abaix
+As informações trocadas na requisição e na resposta, precisam ser formatadas em `json`, seguindo os schemas listados abaixo.
 
 #### Request Schema
 
@@ -42,7 +42,7 @@ As informações trocadas na requisição e na resposta, precisam ser formatadas
 **ATENÇÃO** Todos os atributos são obrigatórios. As restrições de cada atributo deve ser validada no momento da requisição, retornando o status `400 - Bad Request` em caso de erro na validação.
 
 
-#### Sucess Response Schema
+#### Success Response Schema
 
 ### **GET** `/loan/:id`
 Este endpoint irá retornar o status atual da solicitação. Caso o processamento em background já tiver sido concluído, deve-se exibir o status como `completed` e o resultado no atributo `result`, caso contrário o status estará como `processing`.
@@ -178,7 +178,10 @@ O cálculo da parcela (chamado de PMT) leva em consideração 3 variáveis:
 ## Considerações
 Você deve implementar tratamento para os erros mais óbvios, mas pode decidir como este tratamento será feito. Iremos considerar especialmente a clareza da sua solução, conceitos de orientação a objetos e o uso de boas práticas de programação (como Unit Tests).
 
-O código deve ser escrito em uma das seguintes linguagens: Python, Ruby ou Javascript - utilizamos Python na Noverde.
+É importante pensar que uma nova política pode ser adicionada a qualquer momento, então seu código deve prever esta situação.
+
+**Escreva a solução na linguagem em que você se sentir mais confortável.**
+PS: Na Noverde utilizamos **Python**.
 
 Como resposta, envie um repositório GIT (Github, Bitbucket ou outro de sua preferência) contendo sua solução e um arquivo README com as instruções de como executar o código.
 
