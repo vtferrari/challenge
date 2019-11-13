@@ -79,13 +79,13 @@ Cada cliente possui um `credit score`, um valor que vai de 0 a 1000, sendo 1000 
 
 A consulta do score se dá através do serviço de score (API desenvolvida apenas para este teste). Detalhes da API abaixo:
 
-#### **POST** `https://testapi.noverde-dev.com/score`
+#### **POST** `https://challenge.noverde.name/score`
 
 #### REQUEST HEADER
 Esta API utiliza autenticação via token. Você deve solicitar o token previamente através do e-mail dev@noverde.com.br
 
 ```
- Authorization: Bearer $token_informado_por_email
+ x-api-key: $token_informado_por_email
 ```
 
 #### REQUEST BODY
@@ -112,13 +112,13 @@ Exemplo: João possui uma renda de R$ 1.500,00/mês, porém, 80% dessa renda (R$
 Logo, se a parcela do empréstimo for maior que R$ 300,00, existe uma grande chance de João não honrar este compromisso.
 
 A renda comprometida pode ser consultada na seguinte API (desenvolvida exclusivamente para este desafio), que irá retornar a renda comprometida, em decimal, entre 0 e 1.
-#### **POST** `https://testapi.noverde-dev.com/income`
+#### **POST** `https://challenge.noverde.name/commitment`
 
 #### REQUEST HEADER
 Esta API utiliza autenticação via token. Você deve solicitar o token previamente através do e-mail dev@noverde.com.br
 
 ```
- Authorization: Bearer $token_informado_por_email
+ x-api-key: $token_informado_por_email
 ```
 
 #### REQUEST BODY
