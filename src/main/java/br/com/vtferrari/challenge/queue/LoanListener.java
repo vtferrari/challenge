@@ -24,8 +24,6 @@ public class LoanListener {
     private final AgePolicyUseCase agePolicyUseCase;
     private final CommitmentPolicyUseCase commitmentPolicyUseCase;
     private final LoanRepositoryGateway loanRepositoryGateway;
-
-
     private final ObjectMapper objectMapper;
 
     @KafkaListener(groupId = "loan", topics = LoanQueueGatewayImpl.CHALLENGE_LOAN_PROCESS)

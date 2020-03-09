@@ -15,14 +15,11 @@ public class CommitmentIntegrationImpl implements CommitmentIntegration {
     public static final String X_API_KEY = "x-api-key";
     public static final String X_API_KEY_TOKEN = "z2qcDsl6BK8FEPynp2ND17WvcJKMQTpjT5lcyQ0d";
 
+    private final WebClient webClient;
 
     @Override
     public Mono<CommitmentIntegrationResource> getCommitment(CommitmentIntegrationResource commitmentIntegrationResource) {
 
-        final var webClient = WebClient.builder()
-                .baseUrl("https://challenge.noverde.name")
-                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                .build();
 
         return webClient
                 .post()

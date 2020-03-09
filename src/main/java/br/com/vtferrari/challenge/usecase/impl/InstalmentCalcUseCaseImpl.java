@@ -32,26 +32,22 @@ public class InstalmentCalcUseCaseImpl implements InstalmentCalcUseCase {
 
     private Loan commitment(Loan loan) {
         final var commitment = loan.getCommitment();
-        final var loanCommitted = loan.getIncome().doubleValue() -commitment.doubleValue() * loan.getIncome().doubleValue() ;
-                System.out.println(loanCommitted);
+        final var loanCommitted = loan.getIncome().doubleValue() - commitment.doubleValue() * loan.getIncome().doubleValue();
         switch (loan.getTerms().getTerms()) {
             case 6:
                 final var calcAmountSix = calcAmount(loan, SIX.getTerms());
-                System.out.println(calcAmountSix);
                 final var commitmentSix = calcAmountSix < loanCommitted;
                 if (commitmentSix) {
                     return loan.toBuilder().terms(SIX).commitmentPolicy(true).build();
                 }
             case 9:
                 final var calcAmountNine = calcAmount(loan, NINE.getTerms());
-                System.out.println(calcAmountNine);
                 final var commitmentNine = calcAmountNine < loanCommitted;
                 if (commitmentNine) {
                     return loan.toBuilder().terms(NINE).commitmentPolicy(true).build();
                 }
             case 12:
                 final var calcAmountTwelve = calcAmount(loan, TWELVE.getTerms());
-                System.out.println(calcAmountTwelve);
                 final var commitmentTwelve = calcAmountTwelve < loanCommitted;
                 if (commitmentTwelve) {
                     return loan.toBuilder().terms(TWELVE).commitmentPolicy(true).build();

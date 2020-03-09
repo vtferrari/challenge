@@ -95,7 +95,10 @@
 					<excludes>
 						<exclude>**/resource/*.*</exclude>
 						<exclude>**/domain/*.*</exclude>
-						<exclude>**/**/SandwichApplication.*</exclude>
+						<exclude>**/config/*.*</exclude>
+						<exclude>**/model/*.*</exclude>
+						<exclude>**/exception/*.*</exclude>
+						<exclude>**/**/ChallengeApplication.*</exclude>
 					</excludes>
 				</configuration>
 				<executions>

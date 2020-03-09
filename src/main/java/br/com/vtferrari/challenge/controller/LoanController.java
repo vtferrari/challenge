@@ -30,7 +30,6 @@ public class LoanController {
     @PostMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
     public Mono<LoanTokenResponseResource> loan(@RequestBody @Valid final LoanRequestResource loanResponseResource) {
-        System.out.println(loanResponseResource);
         return Mono.just(loanResponseResource)
                 .map(loanRequestResourceToLoanConvert::converter)
                 .flatMap(createLoanAndSendToQueueUseCase::execute)

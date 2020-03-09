@@ -3,6 +3,7 @@ package br.com.vtferrari.challenge.usecase.impl;
 import br.com.vtferrari.challenge.usecase.InterestRateUseCase;
 import br.com.vtferrari.challenge.usecase.domain.Loan;
 import br.com.vtferrari.challenge.usecase.domain.Term;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -14,7 +15,7 @@ import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -25,7 +26,8 @@ class InstalmentCalcUseCaseImplTest {
     private InterestRateUseCase interestRateUseCase;
 
     @Test
-    void save() {
+    @DisplayName("Can't commit with loan")
+    void canNotCommitWithLoan() {
         final var loan = Loan
                 .builder()
                 .score(600)
@@ -41,10 +43,13 @@ class InstalmentCalcUseCaseImplTest {
 
         assertEquals(Term.SIX, execute.getTerms());
         assertFalse(execute.isCommitmentPolicy());
+
+        verify(interestRateUseCase,atLeastOnce()).execute(any(Loan.class));
     }
 
     @Test
-    void save2() {
+    @DisplayName("Can commit with loan six terms")
+    void canCommitWithLoanSixTerms() {
         final var loan = Loan
                 .builder()
                 .score(900)
@@ -60,10 +65,13 @@ class InstalmentCalcUseCaseImplTest {
         assertEquals(900, execute.getScore());
         assertEquals(Term.SIX, execute.getTerms());
         assertTrue(execute.isCommitmentPolicy());
+
+        verify(interestRateUseCase,atLeastOnce()).execute(any(Loan.class));
     }
 
     @Test
-    void save3() {
+    @DisplayName("Can commit with loan nine terms")
+    void canCommitWithLoanNineTerms() {
         final var loan = Loan
                 .builder()
                 .score(900)
@@ -79,9 +87,13 @@ class InstalmentCalcUseCaseImplTest {
         assertEquals(900, execute.getScore());
         assertEquals(Term.NINE, execute.getTerms());
         assertTrue(execute.isCommitmentPolicy());
+
+        verify(interestRateUseCase,atLeastOnce()).execute(any(Loan.class));
     }
+
     @Test
-    void save4() {
+    @DisplayName("Can commit with loan twelve terms")
+    void canCommitWithLoanTwelveTerms() {
         final var loan = Loan
                 .builder()
                 .score(900)
@@ -97,5 +109,7 @@ class InstalmentCalcUseCaseImplTest {
         assertEquals(900, execute.getScore());
         assertEquals(Term.TWELVE, execute.getTerms());
         assertTrue(execute.isCommitmentPolicy());
+
+        verify(interestRateUseCase,atLeastOnce()).execute(any(Loan.class));
     }
 }
