@@ -32,22 +32,27 @@ public class InstalmentCalcUseCaseImpl implements InstalmentCalcUseCase {
 
     private Loan commitment(Loan loan) {
         final var commitment = loan.getCommitment();
+        final var loanCommitted = loan.getIncome().doubleValue() -commitment.doubleValue() * loan.getIncome().doubleValue() ;
+                System.out.println(loanCommitted);
         switch (loan.getTerms().getTerms()) {
             case 6:
                 final var calcAmountSix = calcAmount(loan, SIX.getTerms());
-                final var commitmentSix = calcAmountSix < commitment.doubleValue() * loan.getIncome().doubleValue();
+                System.out.println(calcAmountSix);
+                final var commitmentSix = calcAmountSix < loanCommitted;
                 if (commitmentSix) {
                     return loan.toBuilder().terms(SIX).commitmentPolicy(true).build();
                 }
             case 9:
                 final var calcAmountNine = calcAmount(loan, NINE.getTerms());
-                final var commitmentNine = calcAmountNine < commitment.doubleValue() * loan.getIncome().doubleValue();
+                System.out.println(calcAmountNine);
+                final var commitmentNine = calcAmountNine < loanCommitted;
                 if (commitmentNine) {
                     return loan.toBuilder().terms(NINE).commitmentPolicy(true).build();
                 }
             case 12:
                 final var calcAmountTwelve = calcAmount(loan, TWELVE.getTerms());
-                final var commitmentTwelve = calcAmountTwelve < commitment.doubleValue() * loan.getIncome().doubleValue();
+                System.out.println(calcAmountTwelve);
+                final var commitmentTwelve = calcAmountTwelve < loanCommitted;
                 if (commitmentTwelve) {
                     return loan.toBuilder().terms(TWELVE).commitmentPolicy(true).build();
                 }
