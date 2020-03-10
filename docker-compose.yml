@@ -23,7 +23,22 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_CREATE_TOPICS: "challenge.loan.process:1:1"
   mongo:
     image: mongo
     ports:
       - 27017:27017
+    depends_on:
+      - zookeeper
+  challenge:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATA_MONGODB_HOST: mongo
+      SPRING_KAFKA_BOOTSTRAP-SERVERS: kafka:29092
+      SPRING_KAFKA_LISTENER_MISSING-TOPICS-FATAL: "false"
+    depends_on:
+      - zookeeper
+      - mongo
+      - kafka

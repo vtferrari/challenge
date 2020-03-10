@@ -1,5 +1,46 @@
 # Desafio Noverde - Engenheiro de Software Senior
 
+# Tecnologias
+
+* Java 13
+* Spring boot 2.2.5
+* Kafka
+* MongoDB
+* Docker
+
+# Endpoint
+
+ | Metodo | URI | Status |
+ |--------| ----|--------|
+ | GET | /v1/loan/{uuid} | 200 |
+ | POST | /v1/loan/ | 202 |
+### Body 
+#### POST /v1/loan
+````$sson
+{
+    "name": "Vinicius Ferrari",
+    "cpf": "11122233344",
+    "birthdate": "1989-10-20",
+    "amount": "3900",
+    "terms": 6,
+    "income": "1900"
+}
+````
+
+
+
+# Como executar
+
+Basta executar o comando  ```docker-compose up -d``` pelo terminal na pasta do projeto,  que tudo rodará automaticamente.
+(OBS.:O serviço foi construido para rodar via Docker o mesmo deve estar intalado)
+# Portas expostas:
+ | Serviço | Porta | 
+ |--------| ----| 
+ | Zookeeper | 2181 | 
+ | Kafka | 9092 | 
+ | Mongo | 27017 |  
+ | App | 8080 |  
+
 ## Introdução
 A Noverde, sendo uma empresa de crédito pessoal, recebe diariamente milhares de solicitações de crédito. 
 
